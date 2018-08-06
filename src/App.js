@@ -6,24 +6,37 @@ let person = {
   hobby: "coding"
 }
 
-function App(){
-  return (
-    <div>
-      <Header {...person} show/>
-      <Header name="Jesper" hobby="coding" age={10} />
-      <Paragraph />
-    </div>
-  );
+class App extends Component {
+  // Dynamically updated values
+  // Inside of class, outside of render
+  state = {
+    counter: 0,
+    name: 'Jesper'
+  }
+  
+  // Arrow function on your own methods
+  handleClick = () => {
+    // Function that takes an object as an argument
+    this.setState({ counter: this.state.counter + 1 });
+  }
+
+  // No arrow on render
+  render(){
+    return (
+      <div>
+        <button onClick={this.handleClick}> Click me! </button>
+        <Header counter={this.state.counter} />
+        <p>{ this.state.name }</p>
+      </div>
+    );
+  }
 }
 
+
 function Header(props) {
-  if(props.name === "Jesper"){
     return <h1 className="header">
-      {props.name} - {props.hobby}
+      {props.counter}
     </h1>;
-  } else {
-    return null;
-  }
 }
 
 export default App;
