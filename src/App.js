@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import Title from './Title';
+import React, { Component, Fragment } from 'react';
+import Header from './components/Header';
+import Paragraph from './components/Paragraph';
+let age = 10;
 
-// JSX - JavaScript eXtended
 function App(){
-  return <div>
-    <Title />
-    <Title />
-    <Title />
-    <Title />
-    <Title />
-    <Title />
-  </div>;
+  return (
+    <div className="container">
+      <Header 
+        name="Jesper" 
+        hobby="coding"
+        age={age} />
+      <Header name="Bananis" />
+      <Paragraph />
+    </div >
+  );
 }
 
 export default App;
