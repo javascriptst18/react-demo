@@ -1,53 +1,39 @@
-import React, { Component, Fragment } from 'react';
-import Paragraph from './components/Paragraph';
-
-let person = {
-  name:"Jesper",
-  hobby: "coding"
-}
+import React, { Component } from 'react';
+import Counter from './components/Counter';
 
 class App extends Component {
   // Dynamically updated values
   // Inside of class, outside of render
   state = {
-    counter: 0,
     name: 'Jesper'
-  }
-  
-  // Arrow function on your own methods
-  handleClick = () => {
-    // Function that takes an object as an argument
-    this.setState({ counter: this.state.counter + 1 });
   }
 
   handleChange = (event) => {
     this.setState({ name: event.target.value })
   }
 
-  // No arrow on render
   render(){
+    let noZ = '';
+    if(this.state.name.includes('z')){
+      noZ = 'NOOOOOOOOO!';
+    }
     return (
       <div>
-        <button onClick={this.handleClick}> Click me! </button>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Enter name</label>
         <input
           name="name"
-          id="name"
           onChange={this.handleChange}
           value={this.state.name}
         />
-        <Header counter={this.state.counter} />
-        <p>{ this.state.name }</p>
+        <p>{this.state.name.split('').reverse().join('')}</p>
+        <p>{ noZ }</p>
+        <Counter />
+        <Counter />
+        <Counter />
+        <Counter />
       </div>
     );
   }
-}
-
-
-function Header(props) {
-    return <h1 className="header">
-      {props.counter}
-    </h1>;
 }
 
 export default App;
