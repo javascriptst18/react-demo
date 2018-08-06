@@ -20,11 +20,22 @@ class App extends Component {
     this.setState({ counter: this.state.counter + 1 });
   }
 
+  handleChange = (event) => {
+    this.setState({ name: event.target.value })
+  }
+
   // No arrow on render
   render(){
     return (
       <div>
         <button onClick={this.handleClick}> Click me! </button>
+        <label htmlFor="name">Name</label>
+        <input
+          name="name"
+          id="name"
+          onChange={this.handleChange}
+          value={this.state.name}
+        />
         <Header counter={this.state.counter} />
         <p>{ this.state.name }</p>
       </div>
