@@ -1,17 +1,8 @@
 import React from 'react';
-import Paragraph from './components/Paragraph';
-import Container from './components/Container';
+import FetchData from './components/FetchData';
 
 // Class is used when state/lifecycle is used
 class App extends React.Component {
-
-  // constructor(){
-  //   super();
-  //   this.state = {
-  //     counter: 0
-  //   }
-  //   this.handleClick = this.handleClick.bind(this);
-  // }
 
   // Class property
   state = {
@@ -24,17 +15,9 @@ class App extends React.Component {
   }
 
   render(){
-    return (
-    <Container 
-        left={ <Heading>Heading!</Heading> }
-        right={ <Paragraph /> }
-    />
-    );
+    return <FetchData />;
   }
 }
 
-function Heading(props){
-  return <h1> { props.children } </h1>;
-}
 
 export default App;
