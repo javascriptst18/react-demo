@@ -1,39 +1,40 @@
-import React, { Component } from 'react';
-import Counter from './components/Counter';
+import React from 'react';
+import Paragraph from './components/Paragraph';
+import Container from './components/Container';
 
-class App extends Component {
-  // Dynamically updated values
-  // Inside of class, outside of render
+// Class is used when state/lifecycle is used
+class App extends React.Component {
+
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     counter: 0
+  //   }
+  //   this.handleClick = this.handleClick.bind(this);
+  // }
+
+  // Class property
   state = {
-    name: 'Jesper'
+    counter: 0
   }
 
-  handleChange = (event) => {
-    this.setState({ name: event.target.value })
+  handleClick = (event) => {
+    // Use ONLY this.setState()
+    this.setState({ counter: this.state.counter + 1 });
   }
 
   render(){
-    let noZ = '';
-    if(this.state.name.includes('z')){
-      noZ = 'NOOOOOOOOO!';
-    }
     return (
-      <div>
-        <label htmlFor="name">Enter name</label>
-        <input
-          name="name"
-          onChange={this.handleChange}
-          value={this.state.name}
-        />
-        <p>{this.state.name.split('').reverse().join('')}</p>
-        <p>{ noZ }</p>
-        <Counter />
-        <Counter />
-        <Counter />
-        <Counter />
-      </div>
+    <Container 
+        left={ <Heading>Heading!</Heading> }
+        right={ <Paragraph /> }
+    />
     );
   }
+}
+
+function Heading(props){
+  return <h1> { props.children } </h1>;
 }
 
 export default App;
