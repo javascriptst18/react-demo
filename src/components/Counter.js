@@ -1,22 +1,34 @@
 import React from 'react';
 
-class Counter extends React.Component{
-  state = {
-    counter: 0
-  }
-
-  handleClick = () => {
-    this.setState({ counter: this.state.counter + 1 });
-  }
-
-  render(){
-    return(
-      <div>
-        <button onClick={this.handleClick}> Click me! </button>
-        <p>{this.state.counter} </p>
-      </div>
-    )
+function counter(counter) {
+  return function (previousState) {
+    switch (counter) {
+      case 'INC':
+        return { clicks: previousState.clicks + 1 }
+      case 'DEC':
+        return { clicks: previousState.clicks - 1 }
+    }
   }
 }
 
-export default Counter;
+class App extends React.Component {
+
+  state = {
+    clicks: 0
+  }
+
+  increaseClicks = () => this.setState(counter('INC'));
+  decreaseClicks = () => this.setState(counter('DEC'));
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.clicks.toFixed(0)}</p>
+        <button onClick={this.increaseClicks}>Increment</button>
+        <button onClick={this.decreaseClicks}>Decrement</button>
+      </div>
+    );
+  }
+}
+
+export default App;

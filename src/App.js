@@ -1,5 +1,6 @@
 import React from 'react';
 import FetchData from './components/FetchData';
+import Counter from './components/Counter';
 
 // Class is used when state/lifecycle is used
 class App extends React.Component {
@@ -15,7 +16,7 @@ class App extends React.Component {
   }
 
   render(){
-    return <FetchData />;
+    return <Counter />;
   }
 }
 

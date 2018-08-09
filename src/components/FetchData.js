@@ -7,7 +7,7 @@ class FetchData extends React.Component {
   }
 
   //Lifecycle method
-  componentDidMount(){
+  componentDidMount() {
     this.fetchDataFromAPI();
   }
 
@@ -15,33 +15,29 @@ class FetchData extends React.Component {
     fetch('https://javascriptst18.herokuapp.com/trending?_limit=10')
       .then(response => response.json())
       .then((trendingMovies) => {
-          this.setState({ trendingMovies: trendingMovies });
-      }); 
+        this.setState({ trendingMovies: trendingMovies });
+      });
   }
 
-  // Render MÅSTE finnas
-  render(){
+  logId = (id) => {
+    console.log(id);
+  }
+
+  render() {
     const movies = this.state.trendingMovies.map((movie) => {
-      return <div>
-        <p> {movie.title} </p>
-        <em> {movie.rating} </em>
-      </div>
+      return (
+        <div key={movie.id} onClick={() => this.logId(movie.id)}>
+          <p> {movie.title} </p>
+          <em> {movie.rating} </em>
+        </div>
+        );
     });
 
-    const movieList = [];
-    for(let movie of this.state.trendingMovies){
-      movieList.push(<p> {movie.title} </p>);
-    }
-    
-    if(this.state.trendingMovies.length){
-      return (
-        <div>
-          { movies }
-        </div>
-      )
-    } else {
-      return <p> LOADING!!!! </p>
-    }
+    return (
+      <div>
+        {movies}
+      </div>
+    )
   }
 }
 
