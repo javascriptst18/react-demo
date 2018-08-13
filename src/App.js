@@ -1,12 +1,9 @@
 import React from 'react';
+import Button from './components/Button';
 
 class App extends React.Component {
   render(){
-    // Card has no className or onClick
-    return <CrimsonCard 
-      title="My Title" 
-      subtitle="My subtitle"
-      />;
+    return <Button> Click me! </Button>
   }
 }
 
@@ -27,11 +24,5 @@ function CrimsonCard(props){
   // return <Card {...props} color="crimson" />
   return <Card title={props.title} subtitle={props.subtitle} color="crimson" />
 }
-
-
-
-
-
-
 
 export default App;
